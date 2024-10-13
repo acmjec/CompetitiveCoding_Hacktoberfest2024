@@ -25,24 +25,10 @@ Output: [1]
 
 Constraints:
 
-nums1.length == m + n
-nums2.length == n
-0 <= m, n <= 200
-1 <= m + n <= 200
--109 <= nums1[i], nums2[j] <= 109
+- nums1.length == m + n
+- nums2.length == n
+- 0 <= m, n <= 200
+- 1 <= m + n <= 200
+- -109 <= nums1[i], nums2[j] <= 109
 
 
-SOLUTION
-
-Language- C++
-
-class Solution {
-public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        for (int j = 0, i = m; j<n; j++){
-            nums1[i] = nums2[j];
-            i++;
-        }
-        sort(nums1.begin(),nums1.end());
-    }
-};
