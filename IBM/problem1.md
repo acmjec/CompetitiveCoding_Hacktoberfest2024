@@ -29,5 +29,40 @@ Output: true
 - 	1 <= s.length <= 104
 -	s consists of parentheses only '()[]{}'.
 
+SOLUTION
 
+Language- C++
+
+class Solution
+{
+public:
+    bool isValid(string s)
+    {
+        unordered_map<char, char> bracket_map = {
+            {')', '('},
+            {'}', '{'},
+            {']', '['}};
+
+        stack<char> st;
+
+        for (char ch : s)
+        {
+            if (bracket_map.find(ch) != bracket_map.end())
+            {
+                char top_element = st.empty() ? '#' : st.top();
+                st.pop();
+                if (top_element != bracket_map[ch])
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                st.push(ch);
+            }
+        }
+
+        return st.empty();
+    }
+};
 
