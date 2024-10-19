@@ -19,3 +19,29 @@ Output: 5
 Constraints:
 1 <= n <= 105
 -1000 <= arr[i] <= 1000, for each valid i
+
+SOLUTION
+
+Language - C++
+
+class Solution {
+public:
+    int maxLen(vector<int>& arr, int n) {
+        unordered_map<int, int> prefixSumMap;
+        int sum = 0, maxLength = 0;
+        
+        for(int i = 0; i < n; i++) {
+            sum += arr[i];
+            
+            if(sum == 0) {
+                maxLength = i + 1;
+            } else if(prefixSumMap.find(sum) != prefixSumMap.end()) {
+                maxLength = max(maxLength, i - prefixSumMap[sum]);
+            } else {
+                prefixSumMap[sum] = i;
+            }
+        }
+        
+        return maxLength;
+    }
+};
