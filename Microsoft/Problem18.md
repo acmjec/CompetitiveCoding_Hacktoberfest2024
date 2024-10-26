@@ -6,11 +6,11 @@ Given an integer array `nums`, return the length of the longest strictly increas
 
 ### Example
 
-**Input:** 
-```plaintext
+
 nums = [10, 9, 2, 5, 3, 7, 101, 18]
 
-
+**Input:** 
+```plaintext
 ## Solution
 
 public class LongestIncreasingSubsequence {
