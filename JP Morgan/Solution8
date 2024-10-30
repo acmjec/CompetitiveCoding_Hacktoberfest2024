@@ -1,0 +1,16 @@
+//Solution of problem 8 In C++
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int profit = 0;
+        int buyvalue = prices[0];
+        for(int sell = 1;sell < prices.size();sell++){
+            if(prices[sell]> buyvalue){
+                profit = max(profit,prices[sell]-buyvalue);
+            }
+            buyvalue = min(buyvalue,prices[sell]);
+        }
+        return profit;
+    }
