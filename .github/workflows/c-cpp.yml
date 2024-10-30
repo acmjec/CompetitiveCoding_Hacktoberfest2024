@@ -22,7 +22,7 @@ int main() {
     vector<int> arr = {9, 9, 9};
 
     vector<int> result = increment(N, arr);
-    for (int digit: result) {
+    for (int digit : result) {
         cout << digit << " ";
     }
     cout << endl;
