@@ -16,17 +16,3 @@ vector<int> increment(int N, vector<int>& arr) {
     arr.insert(arr.begin(), 1);
     return arr;
 }
-
-int main() {
-    int N = 3;
-    vector<int> arr = {9, 9, 9};
-
-    vector<int> result = increment(N, arr);
-    for (int digit : result) {
-        cout << digit << " ";
-    }
-    cout << endl;
-
-    return 0;
-}
-
