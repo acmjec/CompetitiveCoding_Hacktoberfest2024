@@ -1,8 +1,6 @@
-solution of 17
 
-#include <iostream>
-#include <vector>
-using namespace std;
+class Solution{
+public:
 
 vector<int> increment(int N, vector<int>& arr) {
     for (int i = N - 1; i >= 0; i--) {
@@ -16,3 +14,4 @@ vector<int> increment(int N, vector<int>& arr) {
     arr.insert(arr.begin(), 1);
     return arr;
 }
+};
