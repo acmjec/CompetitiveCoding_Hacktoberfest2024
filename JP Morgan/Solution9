@@ -1,0 +1,42 @@
+//Solution of Problem 9 In C++
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int rows[4] = {  -1,1,0,0,};
+    int cols[4] = {0, 0, -1, 1};
+    bool isvalid(int x, int y, int& r, int& c) {
+        return x >= 0 && x < r && y >= 0 && y < c;
+    }
+    int numIslands(vector<vector<char>>& grid) {
+
+        int row = grid.size();
+        int col = grid[0].size();
+        int count = 0;
+        queue<pair<int, int>> q;
+        for (int i = 0; i < row; i++) {
+           for (int j = 0; j < col; j++) {
+                if (grid[i][j] == '1') {
+                  q.push(make_pair(i, j));
+                  grid[i][j] = '2';
+
+                 count++;
+               while (!q.empty()) {
+                  int r = q.front().first;
+                  int c = q.front().second;
+                  q.pop();
+                   for (int i = 0; i < 4; i++) {
+                        if (isvalid(r + rows[i], c + cols[i], row, col) &&
+                          grid[r + rows[i]][c + cols[i]] == '1') {
+                          q.push(make_pair(r + rows[i], c + cols[i]));
+                          grid[r + rows[i]][c + cols[i]] = '2';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+};
