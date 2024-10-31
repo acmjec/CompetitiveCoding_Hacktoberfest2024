@@ -1,0 +1,50 @@
+problem 6 in JP morgan with cpp
+
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+class Solution {
+public:
+    // Method to determine if a number is a happy number
+    bool isHappy(int n) {
+        int slow = n;
+        int fast = n;
+
+        // Loop to move slow by one step and fast by two steps
+        // Continues until they meet (indicating a cycle) or we find the number equals 1
+        do {
+            slow = sumOfSquares(slow);
+            fast = sumOfSquares(sumOfSquares(fast));
+        } while (slow != fast);
+
+        // If slow equals 1, the number is happy
+        return slow == 1;
+    }
+
+private:
+    // Helper method to calculate the sum of squares of digits of a number
+    int sumOfSquares(int num) {
+        int result = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            result += digit * digit;
+            num /= 10;
+        }
+        return result;
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Test with input 19, which is a happy number
+    int test1 = 19;
+    cout << "Is " << test1 << " a happy number? " << (solution.isHappy(test1) ? "true" : "false") << endl;
+
+    // Test with input 2, which is not a happy number
+    int test2 = 2;
+    cout << "Is " << test2 << " a happy number? " << (solution.isHappy(test2) ? "true" : "false") << endl;
+
+    return 0;
+}
