@@ -1,0 +1,47 @@
+Intuition and Approach
+The goal is to maximize the profit by choosing an optimal day to buy and a later day to sell. Here's the step-by-step breakdown of the approach:
+
+Track Minimum Price So Far:
+
+As we iterate through the list of prices, keep track of the lowest price encountered so far. This represents the optimal day to buy up to the current day.
+Calculate Profit for Each Day:
+
+For each price in the list, calculate the potential profit if the stock was bought at the minimum price so far and sold on the current day.
+Update Maximum Profit:
+
+Compare the calculated profit with the maximum profit recorded so far. Update the maximum profit if this day's profit is higher.
+Return the Maximum Profit:
+
+By the end of the loop, maxProfit will hold the highest profit achievable with a single transaction (buy once, sell once).
+This solution runs in 
+𝑂
+(
+𝑁
+)
+O(N) time complexity, as we only need one pass through the list of prices, and it uses 
+𝑂
+(
+1
+)
+O(1) extra space.
+
+
+from typing import List
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        min_price = float('inf')  # Initialize min price to infinity
+        max_profit = 0            # Initialize max profit to zero
+        
+        # Traverse each price in the list
+        for price in prices:
+            # Update the minimum price encountered so far
+            min_price = min(min_price, price)
+            
+            # Calculate profit if sold today
+            profit = price - min_price
+            
+            # Update the maximum profit found so far
+            max_profit = max(max_profit, profit)
+        
+        return max_profit
